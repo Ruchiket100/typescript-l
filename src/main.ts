@@ -1,3 +1,5 @@
+import { BooleanLiteral } from "typescript";
+
 let a : string = 'Ruchiket';
 let b : number = 12;
 let isActive : number | string ;
@@ -21,9 +23,10 @@ interface User  {
     name: string;
     id: number;
 }
-
+// ? makes it optional
 type Guitarist =  {
     name:string;
+    active? : Boolean;
     id : number;
 }
 
@@ -43,3 +46,12 @@ let guitarist1 : Guitarist ={
 function getGuitarist (guitarist: Guitarist){
     console.log(guitarist)
 }
+
+// Enums
+enum Grade {
+    O = 1,
+    P,
+    F
+}
+
+console.log(Grade.O)

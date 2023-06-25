@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 let a = 'Ruchiket';
 let b = 12;
 let isActive;
@@ -24,3 +25,11 @@ let guitarist1 = {
 function getGuitarist(guitarist) {
     console.log(guitarist);
 }
+// Enums
+var Grade;
+(function (Grade) {
+    Grade[Grade["O"] = 1] = "O";
+    Grade[Grade["P"] = 2] = "P";
+    Grade[Grade["F"] = 3] = "F";
+})(Grade || (Grade = {}));
+console.log(Grade.O);
