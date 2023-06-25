@@ -1,5 +1,3 @@
-import { BooleanLiteral } from "typescript";
-
 let a : string = 'Ruchiket';
 let b : number = 12;
 let isActive : number | string ;
@@ -48,10 +46,24 @@ function getGuitarist (guitarist: Guitarist){
 }
 
 // Enums
-enum Grade {
-    O = 1,
-    P,
-    F
+// enum Grade {
+//     O = 1,
+//     P,
+//     F
+// }
+
+
+// literal types 
+let action : 'pending' | 'fulfilled' | 'rejected'
+action = 'fulfilled'
+
+
+// : number = return type
+const add = (a: number, b: number) : number =>{
+    return a + b
 }
 
-console.log(Grade.O)
+type mathFunction = (a: number, b: number) => number 
+let multiply : mathFunction = function (a,b){
+    return a * b
+}
