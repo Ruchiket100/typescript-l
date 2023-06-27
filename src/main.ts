@@ -67,3 +67,12 @@ type mathFunction = (a: number, b: number) => number
 let multiply : mathFunction = function (a,b){
     return a * b
 }
+
+interface Printfunction {
+    first: string,
+    last: string
+}
+
+function printString (name: Printfunction): string{
+    return name.first + name.last
+}
