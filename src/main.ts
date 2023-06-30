@@ -1,52 +1,54 @@
-// Classes
-// Vissibility Modifiers 
-// Public - can access from anywhere
-// Private - only access is main class
-// protected - can access from main and derived class also and not for intstance
-// readonly - cannot change value after declaration
-class Student {
+// Index Signature
+interface Cart {
+    readonly [index: string]: number
 
-    constructor(
-        public name: string,
-        public readonly id: number,
-        private age: number,
-        protected lang: string = 'English'
-    ) {
-        this.name = name
-        this.id = id
-        this.age = age
-        this.lang = lang
-    }
-
-    public getLang() {
-        console.log(this.lang)
-    }
 }
 
+// interface Cart {
+// apple: number
+// banana: number
+// grapes: number
+// }
 
-let Ruchiket = new Student('Ruchiket', 9, 19)
-
-// console.log(Ruchiket.lang) // this cannot be accessed [protected]
-
-
-// ------------------------------------------
-class MusicData {
-    public musics: string[]
-
-    constructor() {
-        this.musics = []
-    }
-
-    public get data(): string[] {
-        return this.musics
-    }
-    public set data(value: string[]) {
-        if (Array.isArray(value) && value.every(e => typeof e === 'string'))
-            this.musics = value
-        else throw new Error('parameter value is not array or not array of string')
-    }
+const FoodCart: Cart = {
+    apple: 10,
+    banana: 20,
+    grapes: 30
 }
 
-let indie = new MusicData()
-indie.data = ['Bye', 'Kho Gaye', 'Khaak']
-console.log(indie.data)
+let prop: string = 'apple'
+// console.log(FoodCart[prop])
+//Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Cart'.
+
+// ---------------------------------------
+
+interface Student {
+    name: string
+    id: number
+    classes?: string[]
+}
+
+const shinchan: Student = {
+    name: 'Shinchan',
+    id: 1,
+    classes: ['English', 'Drawing']
+}
+
+// for (let key in shinchan)
+//     console.log(shinchan[key as keyof Student])
+
+// ---------------------------------------
+
+// interface income {
+//     [key: string]: number
+// }
+
+type Streams = 'salary' | 'investment' | 'sideHustle'
+
+type income = Record<Streams, number>
+
+let myIncome: income = {
+    salary: 100,
+    investment: 200,
+    sideHustle: 1000
+}
