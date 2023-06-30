@@ -1,78 +1,52 @@
-let a : string = 'Ruchiket';
-let b : number = 12;
-let isActive : number | string ;
-let isLoading : boolean;
-let data : any;
+// Classes
+// Vissibility Modifiers 
+// Public - can access from anywhere
+// Private - only access is main class
+// protected - can access from main and derived class also and not for intstance
+// readonly - cannot change value after declaration
+class Student {
 
-// Arrays and Objects
-let artists = ['picasso', 'da vincii',200] // string | number
-artists[0] = 23; 
+    constructor(
+        public name: string,
+        public readonly id: number,
+        private age: number,
+        protected lang: string = 'English'
+    ) {
+        this.name = name
+        this.id = id
+        this.age = age
+        this.lang = lang
+    }
 
-//tuple
-let myTuple : [string, number, boolean] = ['ruchiket', 9, true] // 3 elements [string, number, boolean]
-let array1 = ['ruchiket', 9, true] // array of string | number | boolean
-
-
-// Object 
-
-let obj : object;
-
-interface User  {
-    name: string;
-    id: number;
-}
-// ? makes it optional
-type Guitarist =  {
-    name:string;
-    active? : Boolean;
-    id : number;
-}
-
-let user : User ={
-    name: 'Dev',
-    id: 0
+    public getLang() {
+        console.log(this.lang)
+    }
 }
 
 
-let guitarist1 : Guitarist ={
-    name: 'paul',
-    id: 1010
+let Ruchiket = new Student('Ruchiket', 9, 19)
+
+// console.log(Ruchiket.lang) // this cannot be accessed [protected]
+
+
+// ------------------------------------------
+class MusicData {
+    public musics: string[]
+
+    constructor() {
+        this.musics = []
+    }
+
+    public get data(): string[] {
+        return this.musics
+    }
+    public set data(value: string[]) {
+        if (Array.isArray(value) && value.every(e => typeof e === 'string'))
+            this.musics = value
+        else throw new Error('parameter value is not array or not array of string')
+    }
 }
 
-
-//function
-function getGuitarist (guitarist: Guitarist){
-    console.log(guitarist)
-}
-
-// Enums
-// enum Grade {
-//     O = 1,
-//     P,
-//     F
-// }
-
-
-// literal types 
-let action : 'pending' | 'fulfilled' | 'rejected'
-action = 'fulfilled'
-
-
-// : number = return type
-const add = (a: number, b: number) : number =>{
-    return a + b
-}
-
-type mathFunction = (a: number, b: number) => number 
-let multiply : mathFunction = function (a,b){
-    return a * b
-}
-
-interface Printfunction {
-    first: string,
-    last: string
-}
-
-function printString (name: Printfunction): string{
-    return name.first + name.last
-}
+let indie = new MusicData()
+indie.data = ['Bye', 'Kho Gaye', 'Khaak']
+console.log(indie.data)

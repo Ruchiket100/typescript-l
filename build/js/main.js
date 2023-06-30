@@ -1,42 +1,42 @@
 "use strict";
-let a = 'Ruchiket';
-let b = 12;
-let isActive;
-let isLoading;
-let data;
-// Arrays and Objects
-let artists = ['picasso', 'da vincii', 200]; // string | number
-artists[0] = 23;
-//tuple
-let myTuple = ['ruchiket', 9, true]; // 3 elements [string, number, boolean]
-let array1 = ['ruchiket', 9, true]; // array of string | number | boolean
-// Object 
-let obj;
-let user = {
-    name: 'Dev',
-    id: 0
-};
-let guitarist1 = {
-    name: 'paul',
-    id: 1010
-};
-//function
-function getGuitarist(guitarist) {
-    console.log(guitarist);
+// Classes
+// Vissibility Modifiers 
+// Public - can access from anywhere
+// Private - only access is main class
+// protected - can access from main and derived class also and not for intstance
+// readonly - cannot change value after declaration
+class Student {
+    constructor(name, id, age, lang = 'English') {
+        this.name = name;
+        this.id = id;
+        this.age = age;
+        this.lang = lang;
+        this.name = name;
+        this.id = id;
+        this.age = age;
+        this.lang = lang;
+    }
+    getLang() {
+        console.log(this.lang);
+    }
 }
-// Enums
-// enum Grade {
-//     O = 1,
-//     P,
-//     F
-// }
-// literal types 
-let action;
-action = 'fulfilled';
-// : number = return type
-const add = (a, b) => {
-    return a + b;
-};
-let multiply = function (a, b) {
-    return a * b;
-};
+let Ruchiket = new Student('Ruchiket', 9, 19);
+// console.log(Ruchiket.lang) // this cannot be accessed [protected]
+// ------------------------------------------
+class MusicData {
+    constructor() {
+        this.musics = [];
+    }
+    get data() {
+        return this.musics;
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every(e => typeof e === 'string'))
+            this.musics = value;
+        else
+            throw new Error('parameter value is not array or not array of string');
+    }
+}
+let indie = new MusicData();
+indie.data = ['Bye', 'Kho Gaye', 'Khaak'];
+console.log(indie.data);
